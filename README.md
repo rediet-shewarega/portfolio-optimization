@@ -1,63 +1,77 @@
 # Time Series Forecasting for Portfolio Management Optimization
 
 ## Project Overview
-This project analyzes historical financial data for TSLA, BND, and SPY from January 1, 2015 to June 30, 2026. The goal is to explore trends, risk, volatility, and begin forecasting Tesla stock prices for portfolio management.
 
-## Assets
-- TSLA: High-risk, high-growth stock
-- BND: Low-risk bond ETF
-- SPY: Moderate-risk S&P 500 ETF
+This project applies time series forecasting and portfolio optimization techniques to support investment decision-making for GMF Investments. The goal is to analyze historical financial data, forecast Tesla stock price trends, optimize a portfolio using Modern Portfolio Theory, and backtest the strategy against a benchmark portfolio.
 
-## Interim Submission
-The interim submission includes:
-- Task 1: Data extraction, cleaning, EDA, stationarity testing, volatility analysis, and risk metrics
-- Task 2: Initial ARIMA model for TSLA forecasting
+The analysis focuses on three assets:
+
+- **TSLA**: Tesla stock, representing a high-risk, high-growth asset.
+- **BND**: Vanguard Total Bond Market ETF, representing a low-risk stability asset.
+- **SPY**: S&P 500 ETF, representing diversified broad market exposure.
+
+The data was collected using the `yfinance` Python library for the period from **January 1, 2015 to June 30, 2026**.
+
+---
+
+## Business Objective
+
+GMF Investments wants to use historical financial data and forecasting models to improve portfolio management decisions. This project supports that objective by:
+
+1. Exploring asset price behavior and risk characteristics.
+2. Building time series forecasting models for Tesla stock.
+3. Forecasting future Tesla market trends.
+4. Constructing an optimized portfolio using Modern Portfolio Theory.
+5. Backtesting the optimized portfolio against a passive benchmark.
+
+---
 
 ## Project Structure
-- data/raw: Raw data downloaded from yfinance
-- data/processed: Cleaned data and calculated metrics
-- notebooks: Jupyter notebooks for EDA and modeling
-- src: Source code folder
-- tests: Test folder
-- scripts: Utility scripts
 
-## How to Run
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-Then run the notebooks in this order:
-
-1. `notebooks/01_eda_and_preprocessing.ipynb`
-2. `notebooks/02_arima_modeling.ipynb`
-
-## Notebooks
-
-- `01_eda_and_preprocessing.ipynb`: Data extraction, cleaning, EDA, stationarity testing, volatility analysis, and risk metrics.
-- `02_arima_modeling.ipynb`: Initial ARIMA model for TSLA stock price forecasting.
-
-## Key Outputs
-
-- Adjusted closing price visualization for TSLA, BND, and SPY
-- Daily returns visualization
-- Rolling volatility analysis
-- Outlier detection
-- ADF stationarity test
-- VaR and Sharpe Ratio risk metrics
-- Initial ARIMA forecast for TSLA
-
-## Key Insights
-
-- TSLA showed the strongest growth but also the highest volatility.
-- BND was the most stable asset and can help reduce portfolio risk.
-- SPY provided moderate risk with diversified market exposure.
-- The ADF test showed that price data is generally non-stationary, while daily returns are more suitable for risk analysis.
-- ARIMA was implemented as the first baseline forecasting model for TSLA.
-
-## Next Steps
-
-- Improve ARIMA parameters using ACF/PACF or auto_arima.
-- Build an LSTM model for final submission.
-- Compare ARIMA and LSTM using MAE, RMSE, and MAPE.
-- Use the best model for future forecasting and portfolio optimization.
+```text
+portfolio-optimization/
+│
+├── .github/
+│   └── workflows/
+│       └── unittests.yml
+│
+├── data/
+│   ├── raw/
+│   │   ├── TSLA_raw.csv
+│   │   ├── BND_raw.csv
+│   │   └── SPY_raw.csv
+│   │
+│   └── processed/
+│       ├── TSLA_cleaned.csv
+│       ├── BND_cleaned.csv
+│       ├── SPY_cleaned.csv
+│       ├── risk_metrics.csv
+│       ├── arima_metrics.csv
+│       ├── tsla_future_forecast.csv
+│       ├── task3_forecast_summary.csv
+│       ├── recommended_portfolio_weights.csv
+│       ├── recommended_portfolio_summary.csv
+│       ├── efficient_frontier_portfolios.csv
+│       └── backtest_performance_metrics.csv
+│
+├── notebooks/
+│   ├── 01_eda_and_preprocessing.ipynb
+│   ├── 02_arima_modeling.ipynb
+│   ├── 03_forecast_future_trends.ipynb
+│   ├── 04_portfolio_optimization.ipynb
+│   ├── 05_strategy_backtesting.ipynb
+│   └── README.md
+│
+├── reports/
+│   └── figures/
+│       ├── tsla_future_forecast_confidence_interval.png
+│       ├── covariance_matrix_heatmap.png
+│       ├── efficient_frontier.png
+│       └── backtest_strategy_vs_benchmark.png
+│
+├── scripts/
+├── src/
+├── tests/
+├── .gitignore
+├── README.md
+└── requirements.txt
